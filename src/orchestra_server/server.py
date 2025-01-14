@@ -1,4 +1,5 @@
-from mcp.server import Server, InitializationOptions, NotificationOptions
+from mcp.server import Server, NotificationOptions
+from mcp.server.models import InitializationOptions
 from .config import Settings
 import mcp
 import mcp.types as types
