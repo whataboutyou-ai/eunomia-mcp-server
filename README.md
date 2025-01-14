@@ -118,6 +118,7 @@ For more detailed usage, advanced configuration, and additional instruments, che
 
 ---
 
+
 [whataboutyou-website]: https://whataboutyou.ai
 [docs]: https://whataboutyou-ai.github.io/eunomia/
 [discord]: https://discord.gg/TyhGZtzg3G
