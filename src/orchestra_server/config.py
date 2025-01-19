@@ -6,10 +6,10 @@ This module defines the settings and configuration options for the MCP Orchestra
 using pydantic for settings management and validation.
 """
 
-from pydantic_settings import BaseSettings
-from pydantic import ConfigDict
-from eunomia.orchestra import Orchestra
 from eunomia.instruments import IdbacInstrument, PiiInstrument
+from eunomia.orchestra import Orchestra
+from pydantic import ConfigDict
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -28,6 +28,6 @@ class Settings(BaseSettings):
     APP_VERSION: str = "0.1.0"
     LOG_LEVEL: str = "info"
     MCP_SERVERS: dict = {
-                        ### INSERT SERVERS HERE ###
-                    }
-    ORCHESTRA: Orchestra = None ### INSERT EUNOMIA ORCHESTRA HERE ###
+        ### INSERT SERVERS HERE ###
+    }
+    ORCHESTRA: Orchestra = None  ### INSERT EUNOMIA ORCHESTRA HERE ###

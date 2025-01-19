@@ -1,15 +1,16 @@
-from mcp.server import Server, NotificationOptions
-from mcp.server.models import InitializationOptions
-from .config import Settings
+import asyncio
+import logging
+from contextlib import AsyncExitStack
+
 import mcp
 import mcp.types as types
+from eunomia import *
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
-from contextlib import AsyncExitStack
-import logging
-import asyncio
-from eunomia import *
+from mcp.server import NotificationOptions, Server
+from mcp.server.models import InitializationOptions
 
+from .config import Settings
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -51,8 +52,7 @@ async def list_tools() -> list[types.Tool]:
 
 @server.call_tool()
 async def call_tool(
-    name: str,
-    arguments: dict
+    name: str, arguments: dict
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     server_name, tool_name = name.split(SERVER_TOOLS_SEP, 1)
 
@@ -61,11 +61,12 @@ async def call_tool(
             raise ValueError(f"No session found for sub-server: {server_name}")
 
         session = servers_sessions[server_name]
-        logging.debug(f"Calling tool: {tool_name} on server: {server_name} with arguments: {arguments}")
+        logging.debug(
+            f"Calling tool: {tool_name} on server: {server_name} with arguments: {arguments}"
+        )
 
         result = await asyncio.wait_for(
-            session.call_tool(tool_name, arguments),
-            timeout=10
+            session.call_tool(tool_name, arguments), timeout=10
         )
 
     except asyncio.TimeoutError:
@@ -80,7 +81,7 @@ async def call_tool(
     full_content_post_eunomia = []
     try:
         for content in result.content:
-            if content.type == 'text':
+            if content.type == "text":
                 text_post_eunomia = eunomia_orchestra.run(content.text)
                 full_content_post_eunomia.append(text_post_eunomia)
             else:
@@ -119,18 +120,19 @@ async def list_prompts() -> list[types.Prompt]:
                 )
                 aggregated_prompts.append(renamed_prompt)
         except Exception as e:
-            logger.exception(f"Failed to list_prompts from sub-server {server_name}: {e}")
+            logger.exception(
+                f"Failed to list_prompts from sub-server {server_name}: {e}"
+            )
 
     return aggregated_prompts
 
 
 @server.get_prompt()
 async def get_prompt(
-    name: str, 
-    arguments: dict[str, str] | None = None
+    name: str, arguments: dict[str, str] | None = None
 ) -> types.GetPromptResult:
     """
-    Route the get_prompt call to the correct sub-server, 
+    Route the get_prompt call to the correct sub-server,
     and return the prompt's messages.
     """
     # Extract sub-server name and actual prompt name
@@ -144,7 +146,9 @@ async def get_prompt(
         result = await session.get_prompt(prompt_name, arguments)
         return result
     except Exception as e:
-        logger.exception(f"Failed to get_prompt '{prompt_name}' from sub-server {server_name}: {e}")
+        logger.exception(
+            f"Failed to get_prompt '{prompt_name}' from sub-server {server_name}: {e}"
+        )
         raise
 
 
@@ -172,7 +176,9 @@ async def list_resources() -> list[types.Resource]:
                 )
                 aggregated_resources.append(renamed_resource)
         except Exception as e:
-            logger.exception(f"Failed to list_resources from sub-server {server_name}: {e}")
+            logger.exception(
+                f"Failed to list_resources from sub-server {server_name}: {e}"
+            )
 
     return aggregated_resources
 
@@ -198,7 +204,9 @@ async def read_resource(uri: types.AnyUrl) -> str:
         result = await session.read_resource(real_uri)
         return result.content
     except Exception as e:
-        logger.exception(f"Failed to read_resource '{real_uri}' from sub-server {server_name}: {e}")
+        logger.exception(
+            f"Failed to read_resource '{real_uri}' from sub-server {server_name}: {e}"
+        )
         raise
 
 
@@ -240,11 +248,7 @@ async def initialize_sub_servers(stack: AsyncExitStack):
         args = params.get("args", [])
         env = params.get("env")
 
-        server_params = StdioServerParameters(
-            command=command,
-            args=args,
-            env=env
-        )
+        server_params = StdioServerParameters(command=command, args=args, env=env)
 
         stdio_transport = await stack.enter_async_context(stdio_client(server_params))
         stdio, write = stdio_transport
