@@ -4,11 +4,11 @@
 
 **Eunomia MCP Server**
 
-*Open Source Data Governance for LLM-based Applications — now with MCP integration.*
+*Open Source Data Governance for LLM-based Applications — with MCP integration*
 
 Made with ❤ by the team at [What About You][whataboutyou-website].
 
-[Read the docs][docs] · [Join the Discord][discord]
+[Read the docs][eunomia-docs] · [Join the Discord][discord]
 
 </div>
 
@@ -16,7 +16,7 @@ Made with ❤ by the team at [What About You][whataboutyou-website].
 
 ## Overview
 
-**Eunomia MCP Server** is an extension of the [Eunomia][main-repo] framework that connects Eunomia instruments with [MCP](https://modelcontextprotocol.io/) servers. It provides a simple way to orchestrate data governance policies (like PII detection or user access control) and seamlessly integrate them with external server processes in the MCP ecosystem.
+**Eunomia MCP Server** is an extension of the [Eunomia][eunomia-repo] framework that connects Eunomia instruments with [MCP][mcp-docs] servers. It provides a simple way to orchestrate data governance policies (like PII detection or user access control) and seamlessly integrate them with external server processes in the MCP ecosystem.
 
 With Eunomia MCP Server, you can:
 
@@ -30,16 +30,16 @@ With Eunomia MCP Server, you can:
 ### Installation
 
 ```bash
-git clone https://github.com/whataboutyou-ai/eunomia-MCP-server.git
+git clone https://github.com/whataboutyou-ai/eunomia-mcp-server.git
 ```
 
 ---
 
 ## Basic Usage
 
-Eunomia MCP Server uses the same "instrument" concept as [Eunomia][main-repo]. By defining your set of instruments in an `Orchestra`, you can apply data governance policies to text streams that flow through your MCP-based servers.
+Eunomia MCP Server uses the same "instrument" concept as [Eunomia][eunomia-repo]. By defining your set of instruments in an `Orchestra`, you can apply data governance policies to text streams that flow through your MCP-based servers.
 
-Below is a simplified example of how to define application settings and run the MCP server with [uv](https://docs.astral.sh/uv/).
+Below is a simplified example of how to define application settings and run the MCP server with [uv][uv-docs].
 
 ```python
 """
@@ -112,15 +112,16 @@ This will:
 
 For more detailed usage, advanced configuration, and additional instruments, check out the following resources:
 
-- [Eunomia Documentation][docs]: Learn more about the core Eunomia framework.
-- [Main Eunomia Repository][main-repo]: See the source code and examples.
+- [Eunomia Documentation][eunomia-docs]: Learn more about the core Eunomia framework.
+- [Eunomia Repository][eunomia-repo]: See the source code and examples.
 - [MCP Documentation][mcp-docs]: Explore the Model Context Protocol specification and ecosystem.
 
 ---
 
 
 [whataboutyou-website]: https://whataboutyou.ai
-[docs]: https://whataboutyou-ai.github.io/eunomia/
-[discord]: https://discord.gg/TyhGZtzg3G
-[main-repo]: https://github.com/WhatAboutYou-ai/eunomia
+[eunomia-repo]: https://github.com/WhatAboutYou-ai/eunomia
+[eunomia-docs]: https://whataboutyou-ai.github.io/eunomia/
 [mcp-docs]: https://modelcontextprotocol.io/
+[uv-docs]: https://docs.astral.sh/uv/
+[discord]: https://discord.gg/TyhGZtzg3G
