@@ -12,7 +12,6 @@ Made with ❤ by the team at [What About You][whataboutyou-website].
 
 </div>
 
----
 
 ## Overview
 
@@ -23,7 +22,6 @@ With Eunomia MCP Server, you can:
 - **Enforce data governance** on top of LLM or other text-based pipelines.
 - **Orchestrate multiple servers** that communicate via the MCP framework.
 
----
 
 ## Get Started
 
@@ -106,21 +104,18 @@ This will:
 2. Launch the **Eunomia MCP Server** to handle requests and orchestrate your external MCP server(s).
 3. Apply Eunomia instruments (like `PiiInstrument`) to the incoming text, ensuring data governance policies are automatically enforced.
 
----
 
 ## Documentation
 
 For more detailed usage, advanced configuration, and additional instruments, check out the following resources:
 
 - [Eunomia Documentation][eunomia-docs]: Learn more about the core Eunomia framework.
-- [Eunomia Repository][eunomia-repo]: See the source code and examples.
+- [Eunomia Repository][eunomia-repo]: See Eunomia source code and examples.
 - [MCP Documentation][mcp-docs]: Explore the Model Context Protocol specification and ecosystem.
-
----
 
 
 [whataboutyou-website]: https://whataboutyou.ai
-[eunomia-repo]: https://github.com/WhatAboutYou-ai/eunomia
+[eunomia-repo]: https://github.com/whataboutyou-ai/eunomia
 [eunomia-docs]: https://whataboutyou-ai.github.io/eunomia/
 [mcp-docs]: https://modelcontextprotocol.io/
 [uv-docs]: https://docs.astral.sh/uv/
