@@ -31,9 +31,7 @@ With Eunomia MCP Server, you can:
 git clone https://github.com/whataboutyou-ai/eunomia-mcp-server.git
 ```
 
----
-
-## Basic Usage
+### Basic Usage
 
 Eunomia MCP Server uses the same "instrument" concept as [Eunomia][eunomia-repo]. By defining your set of instruments in an `Orchestra`, you can apply data governance policies to text streams that flow through your MCP-based servers.
 
@@ -105,7 +103,7 @@ This will:
 3. Apply Eunomia instruments (like `PiiInstrument`) to the incoming text, ensuring data governance policies are automatically enforced.
 
 
-## Documentation
+## Further Reading
 
 For more detailed usage, advanced configuration, and additional instruments, check out the following resources:
 
