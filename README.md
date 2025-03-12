@@ -1,3 +1,6 @@
+> [!WARNING]
+> This MCP server is deprecated as it is not compatible with the latest developments of [Eunomia][eunomia-repo]. A new MCP integration is under development and will be available soon.
+
 <div align="center" style="margin-bottom: 1em;">
 
 <img src="https://raw.githubusercontent.com/whataboutyou-ai/eunomia/be03ef57ade3686e6ae7e34227babbea2ae6a04d/docs/assets/logo.svg" alt="Eunomia Logo" width="300"></img>
